@@ -1,4 +1,18 @@
 #include "sort.h"
+/**
+ * swap_num - function that swaps a number
+ * @index: position i
+ * @min_val: position at minimum value
+ * Return: void
+ */
+void swap_num(int *index, int *min_val)
+{
+	int temp;
+
+	temp = *index;
+	*index = *min_val;
+	*min_val  = temp;
+}
 
 /**
  * selection_sort - program that sorts an array of integers
@@ -9,24 +23,27 @@
 
 void selection_sort(int *array, size_t size)
 {
-	int i, j, n, min_index;
-	void(size);
+	size_t i, j, min_value;
 
-	for (i = 0; i < n - 1; i++)
+	for (i = 0; i < size - 1; i++)
 	{
-		min_index = i;
-		for (j = i + 1; j < n; j++)
+		min_value = i;
+
+		for (j = i + 1; j < size; j++)
 		{
-			if (array[min_index] < array[j])
+			if (array[min_value] > array[j])
 			{
-				min_index = j;
+				min_value = j;
 			}
 		}
-		if (min_index != i)
+		if (min_value != i)
 		{
-			int temp = array[i];
-			array[i] = array[min_index];
-			array[min_index] = temp;
+			/*temp = a[i];*/
+			/*array[i] = array[min_index];*/
+			/*array[min_index] = temp;*/
+			swap_num(&array[i], &array[min_value]);
+
+			print_array(array, size);
 		}
 	}
-}	
+}
